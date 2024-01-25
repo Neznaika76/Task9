@@ -177,7 +177,7 @@ int main(int argc, const char * argv[])
 
 */
 // Задание 5
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -206,5 +206,29 @@ int main(int argc, const char * argv[])
         fprintf(fp, "%s", result);
         fclose(fp);
     
+    return 0;
+}
+
+*/
+// Задание 6
+
+#include <stdio.h>
+#include <string.h>
+
+const int string_width = 1024;
+
+int main(int argc, const char * argv[])
+{
+    char line[string_width];
+    FILE *fp;
+    int count = 0;
+    fp = fopen("input.txt", "r");
+    while (fscanf(fp, "%s", line) == 1)
+        if (line[strlen(line) - 1] == 'a')
+            count++;
+    fclose(fp);
+    fp = fopen("output.txt", "w");
+    fprintf(fp, "%d", count);
+    fclose(fp);
     return 0;
 }
