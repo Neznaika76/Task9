@@ -6,12 +6,11 @@
 //
 
 // Задание 1
-
+/*
 #include <stdio.h>
+ 
 int main(int argc, const char * argv[])
 {
-    char name_in[] = "input.txt";
-    char name_out[] = "output.txt";
     char word1[100], word2[100];
     int array1[26] = {0};
     int array2[26] = {0};
@@ -35,5 +34,38 @@ int main(int argc, const char * argv[])
             fprintf(f_out, "%c ", i + 97);
     fclose(f_in);
     fclose(f_out);
+    return 0;
+}
+*/
+// Задание 2
+
+#include <stdio.h>
+#include <string.h>
+
+const int string_width = 1024;
+
+int main(int argc, const char * argv[])
+{
+    char string[string_width];
+    char c;
+    int i = 0;
+    FILE *fp;
+    
+    fp = fopen("input.txt", "r");
+    fscanf(fp, "%[^\n]", string);
+    fclose(fp);
+    
+    while ((c = string[i]) != '\0')
+    {
+        if ((c == 'a') || (c == 'A'))
+            string[i] += 1;
+        else if ((c == 'b') || (c == 'B'))
+            string[i] -= 1;
+        i++;
+    }
+    
+    fp = fopen("output.txt", "w");
+    fprintf(fp, "%s", string);
+    fclose(fp);
     return 0;
 }
