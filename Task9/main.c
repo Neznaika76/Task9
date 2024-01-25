@@ -72,7 +72,7 @@ int main(int argc, const char * argv[])
 }
 */
 // Задание 3
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -138,6 +138,38 @@ int main(int argc, const char * argv[])
     sortAscend(nums, size);
     for (i = 0; i < size; ++i)
         fprintf(f_out, "%d ", nums[i]);
+    fclose(f_in);
+    fclose(f_out);
+    return 0;
+}
+*/
+// Задание 4
+
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc, const char * argv[])
+{
+    FILE *f_in = fopen("input.txt", "r");
+    FILE *f_out = fopen("output.txt", "w");
+  
+    char str1[1002];
+    int j;
+    char c;
+    int i = -1;
+    fgets(str1, 1000, f_in);
+    while (str1[++i] != '\0')
+        {
+            c = str1[i];
+            j = i;
+            while(str1[++j] != '\0')
+                if (str1[j] == c)
+                    str1[j] = ' ';
+        }
+        i = -1;
+        while (str1[++i] != '\0')
+            if (str1[i] != ' ')
+                fprintf(f_out, "%c", str1[i]);
     fclose(f_in);
     fclose(f_out);
     return 0;
