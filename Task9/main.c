@@ -144,7 +144,7 @@ int main(int argc, const char * argv[])
 }
 */
 // Задание 4
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -172,5 +172,39 @@ int main(int argc, const char * argv[])
                 fprintf(f_out, "%c", str1[i]);
     fclose(f_in);
     fclose(f_out);
+    return 0;
+}
+
+*/
+// Задание 5
+
+#include <stdio.h>
+#include <string.h>
+
+const int string_width = 1024;
+
+int main(int argc, const char * argv[])
+{
+    char line[string_width];
+    char result[string_width];
+    FILE *fp;
+    
+    int len = 0, max_len = 0;
+        fp = fopen("input.txt", "r");
+    while (fscanf(fp, "%s", line) == 1)
+        {
+            len = strlen(line);
+            if (len > max_len)
+            {
+                max_len = len;
+                strcpy(result, line);
+            }
+        }
+        fclose(fp);
+    
+    fp = fopen("output.txt", "w");
+        fprintf(fp, "%s", result);
+        fclose(fp);
+    
     return 0;
 }
